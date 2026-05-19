@@ -1,2 +1,2 @@
 # maternal-and-child-health-tracking-system
-this project is related to maternal and child healthcare
+This project is related to maternal and child healthcare
