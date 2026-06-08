@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <h2 class="mb-4">
+        <i class="fas fa-female text-danger"></i> 
+        Register Mother
+    </h2>
+
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Full Name</label>
+                        <input type="text" name="name" 
+                               class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Age</label>
+                        <input type="number" name="age" 
+                               class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Phone</label>
+                        <input type="text" name="phone" 
+                               class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Blood Group</label>
+                        <select name="blood_group" 
+                                class="form-control">
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Trimester</label>
+                        <select name="trimester" 
+                                class="form-control">
+                            <option value="1">1st</option>
+                            <option value="2">2nd</option>
+                            <option value="3">3rd</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Risk Level</label>
+                        <select name="risk_level" 
+                                class="form-control">
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label>Address</label>
+                        <textarea name="address" 
+                                  class="form-control" 
+                                  rows="3"></textarea>
+                    </div>
+                </div>
+                <button type="submit" 
+                        class="btn btn-danger">
+                    <i class="fas fa-save"></i> Register
+                </button>
+                <a href="/mothers/" 
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

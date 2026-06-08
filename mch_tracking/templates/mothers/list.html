@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between mb-3">
+        <h2><i class="fas fa-female text-danger"></i> 
+            Mothers List</h2>
+        <a href="/mothers/register/" 
+           class="btn btn-danger">
+            <i class="fas fa-plus"></i> Add Mother
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Phone</th>
+                        <th>Blood Group</th>
+                        <th>Risk Level</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mother in mothers %}
+                    <tr>
+                        <td>{{ mother.id }}</td>
+                        <td>{{ mother.name }}</td>
+                        <td>{{ mother.age }}</td>
+                        <td>{{ mother.phone }}</td>
+                        <td>{{ mother.blood_group }}</td>
+                        <td>
+                            {% if mother.risk_level == 'High' %}
+                            <span class="badge bg-danger">
+                                High
+                            </span>
+                            {% elif mother.risk_level == 'Medium' %}
+                            <span class="badge bg-warning">
+                                Medium
+                            </span>
+                            {% else %}
+                            <span class="badge bg-success">
+                                Low
+                            </span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="/mothers/{{ mother.id }}/" 
+                               class="btn btn-sm btn-info">
+                                View
+                            </a>
+                            <a href="/mothers/{{ mother.id }}/delete/" 
+                               class="btn btn-sm btn-danger">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            No mothers registered yet.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
